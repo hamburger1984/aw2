@@ -1,12 +1,9 @@
 \documentclass[ngerman,compress,hyperref={bookmarks}]{beamer}
-%\usetheme{Frankfurt}
-%\usetheme{boxes}
-%\usetheme{Malmoe}
 \usetheme{Antibes}
 \useoutertheme{infolines}
-%\useoutertheme{split}
 \usepackage[utf8x]{inputenc}
-%\usepackage[nolist]{acronym}
+
+\usepackage{multirow}
 
 \usepackage{colortbl}
 \definecolor{dunkelgrau}{rgb}{0.8, 0.8, 0.8}
@@ -52,110 +49,152 @@
 \part{Hauptteil}
 \section{Rückblick}
 
-
 \subsection{Was ist der Routing-Atlas?}
 \begin{frame}{Was ist der Routing-Atlas?}
-\begin{itemize}
- \item Projekt der inet AG und des BSI
- \item Topologieanalyse um landesspezifische Teile des Internets zu
- \begin{enumerate}
-  \item Identifizieren
-  \item Klassifizieren
-  \item Visualisieren
- \end{enumerate}
-\end{itemize}
-\vspace{1cm}
-\begin{thebibliography}{}
-\bibitem{schmidt2010} ``Ein Routing-Atlas für die strukturelle und visuelle Exposition des deutschen Internets''
-\newblock Thomas C. Schmidt, Matthias Wählisch, Markus de Brün und Thomas Häberlen (2010)\\[-20pt]
-\end{thebibliography}
+  \begin{itemize}
+    \item Projekt der inet AG und des BSI
+    \item Topologieanalyse um landesspezifische Teile des Internets zu
+    \begin{enumerate}
+      \item Identifizieren
+      \item Klassifizieren
+      \item Visualisieren
+    \end{enumerate}
+  \end{itemize}
+  \vspace{1cm}
+  \begin{thebibliography}{}
+    \bibitem{schmidt2010} ``Ein Routing-Atlas für die strukturelle und visuelle Exposition des deutschen Internets''
+    \newblock Thomas C. Schmidt, Matthias Wählisch, Markus de Brün und Thomas Häberlen (2010)\\[-20pt]
+  \end{thebibliography}
 \end{frame}
 
 \subsection{Bestandteile des Routingatlas}
 \begin{frame}{Bestandteile des Routingatlas}
-\begin{enumerate}
- \item Identifikation deutscher Autonomer Systeme
- \begin {itemize}
-  \item IP-Blöcke identifizieren
-  \item Zu IP-Präfixen auflösen
-  \item IP-Päfixe Autonomen Systemen zuordnen
- \end{itemize}
- \item Neu dazugekommen: Validierung mittels Maxmind \& Cymru
- \item Klassifikation Autonomer Systeme
- \begin{itemize}
-  \item Topologische Einordnung
-  \item Branchen
- \end{itemize}
- \item Routing-Graphen bilden
- \begin{itemize}
-  \item shortest path matrix des NEC-Lab
- \end{itemize}
- \item Visualisierung der (Teil)Graphen
-\end{enumerate}
+  \begin{enumerate}
+  \item Identifikation deutscher Autonomer Systeme
+  \begin {itemize}
+    \item IP-Blöcke identifizieren
+    \item Zu IP-Präfixen auflösen
+    \item IP-Päfixe Autonomen Systemen zuordnen
+  \end{itemize}
+  \item Neu dazugekommen: Validierung mittels Maxmind \& Cymru
+  \item Klassifikation Autonomer Systeme
+  \begin{itemize}
+    \item Topologische Einordnung
+    \item Branchen
+  \end{itemize}
+  \item Routing-Graphen bilden
+  \begin{itemize}
+    \item shortest path matrix des NEC-Lab
+  \end{itemize}
+  \item Visualisierung der (Teil)Graphen
+  \end{enumerate}
 \end{frame}
 
 \subsection{Ziel}
-\begin{frame}<1-2>{Ziel}
-\begin{center}
-{\Large Erweiterung des Routing-Atlas}\\
-\vspace{0.5cm}
-shortest path matrix ersetzen\\
-\vspace{0.5cm}
-Dazu:
-\begin{itemize}
-  \item Datenquellen (Routingtabellen, BGP Peering Informationen der IRR)
-  \item \only<1>{Heuristik zur Bewertung von Inter-AS Links}\only<2>{\textbf{Heuristik zur Bewertung von Inter-AS Links}}
-  \item \only<1>{Kürzeste Wege berechnen}\only<2>{\textbf{Kürzeste Wege berechnen}}
-\end{itemize}
-\end{center}
-%Was ist der Routing-Atlas?
-%\begin{columns}
-%\begin{column}{0.5\textwidth}
-% \begin{figure}
-%  \label{diercke}
-%  \includegraphics[width=0.4\textwidth]{diercke_weltatlas_blaue_ausgabe_mit_dvd}
-% \end{figure}
-%\end{column}
-%\begin{column}{0.4\textwidth}
-%{\Huge $\leftarrow$ ?}
-%\end{column}
-%\end{columns}
+%\begin{frame}<1-2>{Ziel}
+\begin{frame}{Ziel}
+  \begin{center}
+    {\Large Erweiterung des Routing-Atlas}\\
+    \vspace{0.5cm}
+    shortest path matrix ersetzen\\
+    \vspace{0.5cm}
+    Dazu:
+    \begin{itemize}
+      \item Datenquellen (Routingtabellen, BGP Peering Informationen der IRR)
+      %\item \only<1>{Heuristik zur Bewertung von Inter-AS Links}\only<2>{\textbf{Heuristik zur Bewertung von Inter-AS Links}}
+      \item Heuristik zur Bewertung von Inter-AS Links
+      %\item \only<1>{Kürzeste Wege berechnen}\only<2>{\textbf{Kürzeste Wege berechnen}}
+      \item Kürzeste Wege berechnen
+    \end{itemize}
+  \end{center}
 \end{frame}
 
 \section*{Agenda}
 \begin{frame}{Agenda} \setcounter{tocdepth}{1} \tableofcontents[part=1] \setcounter{tocdepth}{3} \end{frame}
 
-\section{AS-Beziehungen, valley-free routing}
-\begin{frame}{AS-Beziehungen, valley-free routing}
- \begin{columns}[c]
-  \begin{column}{0.2\textwidth}
-
-  \end{column}
-
-  \begin{column}{0.5\textwidth}
-    \begin{enumerate}
-     \item[customer-provier] customer zahlt für Transit
-     \item[peering] kostenloser Trafficaustausch
-     \item[sibling] kostenloser Transit\\ \vspace{0.5cm}
-     \item[valley-free routing] Transit nur über ``höhere'' ASes
-    \end{enumerate}
-
-  \end{column}
-  \begin{column}{0.3\textwidth}
-   \begin{figure}
-    \label{asrelations}
-    \includegraphics[width=1\textwidth]{images/asrelation}
-   \end{figure}
-    {\scriptsize }
-  \end{column}
-
- \end{columns}
+\section{Begriffe, Grundlagen}
+\begin{frame}{Begiffe, Grundlagen}
+  \begin{columns}[c]
+    \begin{column}{0.75\textwidth}
+      \begin{itemize}
+        \item Internet: Ansammlung Autonomer Systeme (ASe)
+        \item Geschäftsbeziehung zwischen ASen $\rightarrow$ AS Link
+      \end{itemize}
+      \begin{description}
+        \item[C2P] \textbf{C}ustomer bezahlt \textbf{P}rovider für Transit
+        \item[PP] \textbf{P}eer-\textbf{P}eer - kostenneutralen Austausch von Traffic
+      \end{description}
+      \begin{itemize}
+        \item Öffentlich verfügbar: BGP dumps, traceroutes, looking glass server
+        \item \textbf{Aber} keine zentrale Verwaltung, Vermessungsanstalt, "Ground truth"
+      \end{itemize}
+      ......... \\
+      kl. Grafik?
+    \end{column}
+  \end{columns}
 \end{frame}
+
+%\section{AS-Beziehungen, valley-free routing}
+%\begin{frame}{AS-Beziehungen, valley-free routing}
+% \begin{columns}[c]
+%  \begin{column}{0.2\textwidth}
+%  \end{column}
+%  \begin{column}{0.5\textwidth}
+%    \begin{enumerate}
+%     \item[customer-provier] customer zahlt für Transit
+%     \item[peering] kostenloser Trafficaustausch
+%     \item[sibling] kostenloser Transit\\ \vspace{0.5cm}
+%     \item[valley-free routing] Transit nur über ``höhere'' ASes
+%    \end{enumerate}
+%  \end{column}
+%  \begin{column}{0.3\textwidth}
+%   \begin{figure}
+%    \label{asrelations}
+%    \includegraphics[width=1\textwidth]{images/asrelation}
+%   \end{figure}
+%    {\scriptsize }
+%  \end{column}
+% \end{columns}
+%\end{frame}
 
 
 \section{Related Work}
 
 \subsection{Topologiemodellierung}
+
+\begin{frame}{On power-law relationships of the Internet topology}{1999}
+  \begin{columns}[c]
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+        \item \cite{Faloutsos:1999:PRI:316194.316229}
+        \item Graphentheoretische Betrachtung der Inter- \& Intradomain Topologie
+        \item Entdeckung exponentieller Verhältnisse zwischen ..
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.1\textwidth}
+      \begin{figure}
+        \includegraphics[width=1\textwidth]{images/faloutsos_m}\\
+        \includegraphics[width=1\textwidth]{images/faloutsos_p}\\
+        \includegraphics[width=1\textwidth]{images/faloutsos_c}
+        \label{faloutsos}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.3\textwidth}
+      {\scriptsize Micalis Faloutsos\\
+      \vspace{0.1cm}
+      University of California\\
+      \vspace{0.8cm}
+      Petros Faloutsos\\
+      \vspace{0.1cm}
+      University of Toronto\\
+      \vspace{0.7cm}
+      Christos Faloutsos\\
+      \vspace{0.1cm}
+      Carnegie Mellon University}
+    \end{column}
+  \end{columns}
+\end{frame}
+
 \begin{frame}{On Inferring Autonomous System Relationships in the Internet}{2001}
 \begin{columns}[c]
  \begin{column}{0.5\textwidth}
@@ -251,8 +290,8 @@ UCLA\\
 \section*{Agenda}
 \begin{frame}{Agenda} \setcounter{tocdepth}{1} \tableofcontents[part=1] \setcounter{tocdepth}{3} \end{frame}
 
-\section{Fazit}
-\begin{frame}{Fazit}
+\section{Ausblick}
+\begin{frame}{Ausblick}
 \begin{itemize}
  \item Aktuelle shortest path matrix
  \begin{itemize}
@@ -318,15 +357,21 @@ UCLA\\
 
 \section{Bildquellen}
 \begin{frame}[plain]{Bilderquellen}
-\scriptsize
-\begin{table}
-\begin{tabular}{ c p{0.8\textwidth} }
-Seite & Quelle \\ \hline
-\pageref{gao} & \url{http://www-unix.ecs.umass.edu/~lgao/} \\
-\pageref{zhang_et_al} & \url{http://www.cs.arizona.edu/~bzhang/}, \url{http://www.cs.colostate.edu/~massey/}, \url{http://www.cs.ucla.edu/~lixia/}\\
-\hline
-\end{tabular}
-\end{table}
+  %\scriptsize
+  \tiny
+  \begin{table}
+    \begin{tabular}{ c p{0.8\textwidth} }
+      Seite & Quelle \\ \hline
+      & \multirow{3}{0.8\textwidth}{\url{http://www.cs.ucr.edu/~michalis/},\\ \url{http://www.cse.yorku.ca/cspeople/faculty/pfal/index.html},\\ \url{http://www.cs.cmu.edu/~christos/}} \\
+      \pageref{faloutsos}& \\
+      & \\ \hline
+      \pageref{gao} & \url{http://www-unix.ecs.umass.edu/~lgao/} \\ \hline
+      & \multirow{3}{0.8\textwidth}{\url{http://www.cs.arizona.edu/~bzhang/},\\ \url{http://www.cs.colostate.edu/~massey/},\\ \url{http://www.cs.ucla.edu/~lixia/}} \\
+      \pageref{zhang_et_al} & \\
+      & \\
+      \hline
+    \end{tabular}
+  \end{table}
 \end{frame}
 
 \end{document}
