@@ -127,9 +127,10 @@
       \begin{itemize}
         \item Öffentlich verfügbar: BGP dumps, traceroutes, looking glass server
         \item \textbf{Aber} keine zentrale Verwaltung, Vermessungsanstalt, "Ground truth"
+        \item Topologie aus vorhandenen Daten herleiten
       \end{itemize}
-      ......... \\
-      kl. Grafik?
+      %......... \\
+      %kl. Grafik?
     \end{column}
   \end{columns}
 \end{frame}
@@ -157,18 +158,24 @@
 % \end{columns}
 %\end{frame}
 
+\section*{Agenda}
+\begin{frame}{Agenda} \setcounter{tocdepth}{1} \tableofcontents[part=1] \setcounter{tocdepth}{3} \end{frame}
 
 \section{Related Work}
 
 \subsection{Topologiemodellierung}
 
-\begin{frame}{On power-law relationships of the Internet topology}{1999}
+\begin{frame}{On power-law relationships of the Internet topology}{1999, \cite{Faloutsos:1999:PRI:316194.316229}}
   \begin{columns}[c]
     \begin{column}{0.5\textwidth}
       \begin{itemize}
-        \item \cite{Faloutsos:1999:PRI:316194.316229}
         \item Graphentheoretische Betrachtung der Inter- \& Intradomain Topologie
-        \item Entdeckung exponentieller Verhältnisse zwischen ..
+        \item Entdeckung exponentieller Zusammenhänge zwischen
+        \begin{itemize}
+          \item ausgehenden Links und Rang eines AS
+          \item Häufigkeit und Anzahl ausgehender Links
+          \item Eigen exponent?
+        \end{itemize}
       \end{itemize}
     \end{column}
     \begin{column}{0.1\textwidth}
@@ -195,97 +202,128 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{On Inferring Autonomous System Relationships in the Internet}{2001}
-\begin{columns}[c]
- \begin{column}{0.5\textwidth}
-  \begin{itemize}
-   \item \cite{Gao:2001:IAS:504611.504616}
-   \item AS Pfade aus BGP Routing Tabellen
-   \item Knotengrad als Heuristik
-   \item Einordnung in customer-provider/peering/sibling
-  \end{itemize}
- \end{column}
- \begin{column}{0.1\textwidth}
-  \begin{figure}
-   \includegraphics[width=1\textwidth]{images/gao}
-   \label{gao}
-  \end{figure}
- \end{column}
- \begin{column}{0.3\textwidth}
-  {\scriptsize Lixin Gao\\
-  \vspace{0.1cm}
-  University of Massachusetts\\
-  AT\&T Research Labs}
- \end{column}
-\end{columns}
+\begin{frame}{On Inferring Autonomous System Relationships in the Internet}{2001, \cite{Gao:2001:IAS:504611.504616}}
+  \begin{columns}[c]
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+        \item AS Pfade aus BGP Routing Tabellen
+        \item Knotengrad als Heuristik
+        \item Einordnung in customer-provider/peering/sibling
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.1\textwidth}
+      \begin{figure}
+        \includegraphics[width=1\textwidth]{images/gao}
+        \label{gao}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.3\textwidth}
+      {\scriptsize Lixin Gao\\
+      \vspace{0.1cm}
+      University of Massachusetts\\
+      AT\&T Research Labs}
+    \end{column}
+  \end{columns}
 \end{frame}
 
-\begin{frame}{Type of Relationship (ToR)}
- \begin{columns}[c]
-  \begin{column}{0.5\textwidth}
-   \begin{itemize}
-    \item \cite{Subramanian:2001:CIH:894120, Di_Battista:2007:CTR:1279660.1279662}
-    \item ``Sichtweisen'' getrennt betrachten
-    \item Graphentheoretisches Problem:
-    \begin{itemize}
-     \item Kanten als \emph{uphill}, \emph{downhill} oder \emph{peering} markieren
-     \item Dabei valide Pfade erreichen
-    \end{itemize}
-    \item (Stark) NP-vollständig
-    \item Heuristik: AS Rank
-   \end{itemize}
+% \begin{frame}{Type of Relationship (ToR)}
+%  \begin{columns}[c]
+%   \begin{column}{0.5\textwidth}
+%    \begin{itemize}
+%     \item \cite{Subramanian:2001:CIH:894120, Di_Battista:2007:CTR:1279660.1279662}
+%     \item ``Sichtweisen'' getrennt betrachten
+%     \item Graphentheoretisches Problem:
+%     \begin{itemize}
+%      \item Kanten als \emph{uphill}, \emph{downhill} oder \emph{peering} markieren
+%      \item Dabei valide Pfade erreichen
+%     \end{itemize}
+%     \item (Stark) NP-vollständig
+%     \item Heuristik: AS Rank
+%    \end{itemize}
+%
+%   \end{column}
+%   \begin{column}{0.1\textwidth}
+%
+%   \end{column}
+%   \begin{column}{0.3\textwidth}
+%
+%   \end{column}
+%  \end{columns}
+%
+% \end{frame}
 
-  \end{column}
-  \begin{column}{0.1\textwidth}
 
-  \end{column}
-  \begin{column}{0.3\textwidth}
-
-  \end{column}
- \end{columns}
-
+\begin{frame}{Collection the Internet AS-level Topology}{2005, \cite{Zhang:2005:CIA:1052812.1052825}}
+  \begin{columns}[c]
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+        \item ``most complete AS-level topology''
+        \item route servers, looking glasses, routing registries
+        \item routing updates
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.08\textwidth}
+      \begin{figure}
+        \label{zhang_et_al}
+        \includegraphics[width=1\textwidth]{images/zhang_b}\\
+        \includegraphics[width=1\textwidth]{images/person}\\
+        \includegraphics[width=1\textwidth]{images/massey}\\
+        \includegraphics[width=1\textwidth]{images/zhang_l}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.3\textwidth}
+      {\scriptsize Beichuan Zhang\\
+      \vspace{0.1cm}
+      UCLA\\
+      \vspace{0.7cm}
+      Raymond Liu\\
+      \vspace{0.1cm}
+      UCLA\\
+      \vspace{0.3cm}
+      Daniel Massey\\
+      \vspace{0.1cm}
+      Colorado State University\\
+      \vspace{0.3cm}
+      Lixia Zhang\\
+      \vspace{0.1cm}
+      UCLA}
+    \end{column}
+  \end{columns}
 \end{frame}
 
-
-\begin{frame}{Collection the Internet AS-level Topology}{2005}
-\begin{columns}[c]
- \begin{column}{0.5\textwidth}
-  \begin{itemize}
-   \item \cite{Zhang:2005:CIA:1052812.1052825}
-   \item ``most complete AS-level topology''
-   \item route servers, looking glasses, routing registries
-   \item routing updates
-  \end{itemize}
- \end{column}
- \begin{column}{0.08\textwidth}
-  \begin{figure}
-   \label{zhang_et_al}
-   \includegraphics[width=1\textwidth]{images/zhang_b}\\
-   \includegraphics[width=1\textwidth]{images/person}\\
-   \includegraphics[width=1\textwidth]{images/massey}\\
-   \includegraphics[width=1\textwidth]{images/zhang_l}
-  \end{figure}
- \end{column}
- \begin{column}{0.3\textwidth}
-  {\scriptsize Beichuan Zhang\\
-  \vspace{0.1cm}
-  UCLA\\
-\vspace{0.7cm}
-  Raymond Liu\\
-\vspace{0.1cm}
-UCLA\\
-\vspace{0.3cm}
-  Daniel Massey\\
-\vspace{0.1cm}
-  Colorado State University\\
-\vspace{0.3cm}
-  Lixia Zhang\\
-\vspace{0.1cm}
-  UCLA}
- \end{column}
-\end{columns}
+\begin{frame}{IXPs: Mapped?}{2009, \cite{Augustin:2009:IM:1644893.1644934}}
+  \begin{columns}[c]
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+        \item Präfixe und Mitglieder von IXPs finden
+        \item traceroutes "durch" die IXPs
+        \item (nicht propagierte) Peerings aufdecken
+        \item AS-Graph vollständiger
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.1\textwidth}
+      \begin{figure}
+        \label{augustin}
+        \includegraphics[width=1\textwidth]{images/augustin_b}\\
+        \includegraphics[width=1\textwidth]{images/krishnamurthy_b}\\
+        \includegraphics[width=1\textwidth]{images/willinger_w}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.3\textwidth}
+      {\scriptsize Brice Augustin\\
+      \vspace{0.1cm}
+      Université Pierre et Marie Curie, Paris\\
+      \vspace{0.5cm}
+      Balachander Krishnamurthy\\
+      \vspace{0.1cm}
+      AT\&T Labs-Research, Floham Park\\
+      \vspace{0.3cm}
+      Walter Willinger\\
+      \vspace{0.1cm}
+      AT\&T Labs-Research, Floham Park}
+    \end{column}
+  \end{columns}
 \end{frame}
-
 
 \section*{Agenda}
 \begin{frame}{Agenda} \setcounter{tocdepth}{1} \tableofcontents[part=1] \setcounter{tocdepth}{3} \end{frame}
@@ -368,8 +406,10 @@ UCLA\\
       \pageref{gao} & \url{http://www-unix.ecs.umass.edu/~lgao/} \\ \hline
       & \multirow{3}{0.8\textwidth}{\url{http://www.cs.arizona.edu/~bzhang/},\\ \url{http://www.cs.colostate.edu/~massey/},\\ \url{http://www.cs.ucla.edu/~lixia/}} \\
       \pageref{zhang_et_al} & \\
-      & \\
-      \hline
+      & \\ \hline
+      & \multirow{3}{0.8\textwidth}{\url{http://www-rp.lip6.fr/~augustin/},\\ \url{http://www.njit.edu/news/2011/2011-054.php},\\ \url{http://www.research.att.com/people/Willinger_Walter/index.html?fbid=Y-QjC_arIwn}} \\
+      \pageref{augustin} & \\
+      & \\ \hline
     \end{tabular}
   \end{table}
 \end{frame}
