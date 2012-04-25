@@ -49,17 +49,20 @@
 \part{Hauptteil}
 \section{Intro}
 
-\subsection{Was ist der Routing-Atlas?}
-\begin{frame}{Was ist der Routing-Atlas?}
+\subsection{Routing-Atlas}
+\begin{frame}[allowframebreaks]{Routing-Atlas}
 \nocite{wsbh-envgi-12}
+\nocite{Faloutsos:1999:PRI:316194.316229}
+\nocite{Dimitropoulos:2007:RIV:1198255.1198259}
+\nocite{0903.3218v1}
   \begin{itemize}
     \item Projekt der inet AG und des BSI
     \item Topologieanalyse um landesspezifische Teile des Internets zu
-    \begin{enumerate}
+    \begin{itemize}
       \item Identifizieren
       \item Klassifizieren
       \item Visualisieren
-    \end{enumerate}
+    \end{itemize}
   \end{itemize}
   \vspace{0.1cm}
   {\small
@@ -68,11 +71,13 @@
     \newblock Matthias Wählisch, Thomas C. Schmidt, Markus de Brün, Thomas Häberlen\\
     \newblock In Proc. of the 13th Passive and Active Measurement Conference (PAM), volume 7192 of LNCS, page 200–210, Berlin Heidelberg, 2012. Springer-Verlag.\\[-20pt]
   \end{thebibliography}
+  %\url{http://inet.cpt.haw-hamburg.de/projects/routing-atlas/}
   }
-\end{frame}
-
-\subsection{Bestandteile des Routingatlas}
-\begin{frame}[allowframebreaks]{Bestandteile des Routingatlas}
+  \framebreak
+% \end{frame}
+%
+% \subsection{Bestandteile des Routingatlas}
+% \begin{frame}[allowframebreaks]{Bestandteile des Routingatlas}
   \begin{enumerate}
   \item Identifikation deutscher Autonomer Systeme
   \begin {itemize}
@@ -131,8 +136,8 @@
 % \begin{frame}{Agenda} \setcounter{tocdepth}{1} \tableofcontents[part=1] \setcounter{tocdepth}{3} \end{frame}
 
 \section{Datenquellen}
-\subsection{Problemstellung}
-\begin{frame}{Datenquellen}
+\subsection{Grundlagen, Problemstellung}
+\begin{frame}{Datenquellen}{Grundlagen, Problemstellung}
   \begin{itemize}
     \item Internet: Ansammlung Autonomer Systeme
     \item Routingbeziehungen nicht zentral erfasst\\$\rightarrow$ also: Messen, Sammeln
@@ -157,15 +162,18 @@
 \end{frame}
 
 \subsection{Related Work, Zhang et al}
-\begin{frame}{Collection the Internet AS-level Topology}{2005, \cite{Zhang:2005:CIA:1052812.1052825}}
+\begin{frame}{Collection the Internet AS-level Topology\footnote{\url{http://irl.cs.ucla.edu/topology/}}}{2005, \cite{Zhang:2005:CIA:1052812.1052825}}
   \begin{columns}[c]
     \begin{column}{0.5\textwidth}
       ``most complete AS-level topology''
       \begin{itemize}
-        \item Daten verfügbarer Quellen sammeln
+        \item Verfügbare Daten sammeln
         \item Konsistenzchecks\\{\scriptsize Manuelle gepflegte IRR Einträge}
-        \item
+        \item Normalisierung
+        \item Einordnung von ASen und Links
+        \item Tägliche Veröffentlichung
       \end{itemize}
+      \vspace{1cm}
     \end{column}
     \begin{column}{0.08\textwidth}
       \begin{figure}
@@ -196,254 +204,19 @@
   \end{columns}
 \end{frame}
 
-% achivement: ein Haufen AS-Links/AS-Pfade
-
-\section{Modellierung}
-
-
-
-\section{Routing Matrix}
-
-\section{Fazit}
-
-\section{Grundlagen}
-\begin{frame}[allowframebreaks]{Grundlagen}{AS-Beziehungen}
+\subsection{Related Work, Augustin et al}
+\begin{frame}{IXPs: Mapped?\footnote{\url{http://www-rp.lip6.fr/~augustin/ixp/}}}{2009, \cite{Augustin:2009:IM:1644893.1644934}}
   \begin{columns}[c]
-    \begin{column}{0.75\textwidth}
+    \begin{column}{0.55\textwidth}
       \begin{itemize}
-        \item Internet: Ansammlung Autonomer Systeme (ASe)
-        \item Routingbeziehung zwischen ASen $\rightarrow$ AS-Link
-      \end{itemize}
-      \begin{description}
-        \item[C2P] Customer zahlt für Transit
-        \item[Peering] kostenneutraler Trafficaustausch\\{\scriptsize(meist) kein Transit}
-        \item[Sibling] kostenneutraler Transit\\{\scriptsize z.B. mehrere ASe eines Konzerns}
-      \end{description}
-    \end{column}
-    \begin{column}{0.25\textwidth}
-      \begin{figure}
-        \includegraphics[width=1\textwidth]{images/Routingbeziehungen}
-%         \caption{Routingbeziehungen}
-      \end{figure}
-    \end{column}
-  \end{columns}
-%   \begin{description}
-%     \item[C2P] \textbf{C}ustomer bezahlt \textbf{P}rovider für Transit
-%     \item[PP] \textbf{P}eer-\textbf{P}eer - kostenneutralen Austausch von Traffic
-%     \item[Sibling] Mehrere ASe unter gemeinsamer Verwaltung
-%   \end{description}
-
-
-
-\framebreak
-  \begin{columns}[c]
-    \begin{column}{0.75\textwidth}
-      \begin{itemize}
-        \item Internet: Ansammlung Autonomer Systeme (ASe)
-        \item Geschäftsbeziehung zwischen ASen $\rightarrow$ AS Link
-      \end{itemize}
-      \begin{description}
-        \item[C2P] Customer zahlt für Transit
-        \item[Peering] kostenneutraler Trafficaustausch\\{\scriptsize(meist) kein Transit}
-        \item[Sibling] kostenneutraler Transit\\{\scriptsize z.B. mehrere ASe eines Konzerns}
-      \end{description}
-      \begin{itemize}
-        \item Öffentlich verfügbar: BGP dumps, traceroutes, looking glass server
-        \item \textbf{Aber} keine zentrale Verwaltung, Vermessungsanstalt, "Ground truth"
-        \item Topologie aus vorhandenen Daten herleiten
-      \end{itemize}
-      %......... \\
-      %kl. Grafik?
-    \end{column}
-  \end{columns}
-\end{frame}
-
-%\section{AS-Beziehungen, valley-free routing}
-%\begin{frame}{AS-Beziehungen, valley-free routing}
-% \begin{columns}[c]
-%  \begin{column}{0.2\textwidth}
-%  \end{column}
-%  \begin{column}{0.5\textwidth}
-%    \begin{enumerate}
-%     \item[customer-provier] customer zahlt für Transit
-%     \item[peering] kostenloser Trafficaustausch
-%     \item[sibling] kostenloser Transit\\ \vspace{0.5cm}
-%     \item[valley-free routing] Transit nur über ``höhere'' ASes
-%    \end{enumerate}
-%  \end{column}
-%  \begin{column}{0.3\textwidth}
-%   \begin{figure}
-%    \label{asrelations}
-%    \includegraphics[width=1\textwidth]{images/asrelation}
-%   \end{figure}
-%    {\scriptsize }
-%  \end{column}
-% \end{columns}
-%\end{frame}
-
-\section*{Agenda}
-\begin{frame}{Agenda} \setcounter{tocdepth}{1} \tableofcontents[part=1] \setcounter{tocdepth}{3} \end{frame}
-
-\section{Related Work}
-
-\subsection{Topologiemodellierung}
-
-\begin{frame}{On power-law relationships of the Internet topology}{1999, \cite{Faloutsos:1999:PRI:316194.316229}}
-  \begin{columns}[c]
-    \begin{column}{0.5\textwidth}
-      \begin{itemize}
-        \item Graphentheoretische Betrachtung der Inter- \& Intradomain Topologie
-        \item Entdeckung exponentieller Zusammenhänge zwischen
-        \begin{itemize}
-          \item ausgehenden Links und Rang eines AS
-          \item Häufigkeit und Anzahl ausgehender Links
-          \item Eigen exponent?
-        \end{itemize}
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.1\textwidth}
-      \begin{figure}
-        \includegraphics[width=1\textwidth]{images/faloutsos_m}\\
-        \includegraphics[width=1\textwidth]{images/faloutsos_p}\\
-        \includegraphics[width=1\textwidth]{images/faloutsos_c}
-        \label{faloutsos}
-      \end{figure}
-    \end{column}
-    \begin{column}{0.3\textwidth}
-      {\scriptsize Micalis Faloutsos\\
-      \vspace{0.1cm}
-      University of California\\
-      \vspace{0.8cm}
-      Petros Faloutsos\\
-      \vspace{0.1cm}
-      University of Toronto\\
-      \vspace{0.7cm}
-      Christos Faloutsos\\
-      \vspace{0.1cm}
-      Carnegie Mellon University\\ }
-    \end{column}
-  \end{columns}
-\end{frame}
-
-\begin{frame}{On Inferring Autonomous System Relationships in the Internet}{2001, \cite{Gao:2001:IAS:504611.504616}}
-  \begin{columns}[c]
-    \begin{column}{0.5\textwidth}
-      \begin{itemize}
-        \item AS Pfade aus BGP Routing Tabellen
-        \item Knotengrad als Heuristik
-        \item Einordnung in customer-provider/peering/sibling
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.1\textwidth}
-      \begin{figure}
-        \includegraphics[width=1\textwidth]{images/gao}
-        \label{gao}
-      \end{figure}
-    \end{column}
-    \begin{column}{0.3\textwidth}
-      {\scriptsize Lixin Gao\\
-      \vspace{0.1cm}
-      University of Massachusetts\\
-      AT\&T Research Labs}
-    \end{column}
-  \end{columns}
-\end{frame}
-
-% \begin{frame}{Type of Relationship (ToR)}
-%  \begin{columns}[c]
-%   \begin{column}{0.5\textwidth}
-%    \begin{itemize}
-%     \item \cite{Subramanian:2001:CIH:894120, Di_Battista:2007:CTR:1279660.1279662}
-%     \item ``Sichtweisen'' getrennt betrachten
-%     \item Graphentheoretisches Problem:
-%     \begin{itemize}
-%      \item Kanten als \emph{uphill}, \emph{downhill} oder \emph{peering} markieren
-%      \item Dabei valide Pfade erreichen
-%     \end{itemize}
-%     \item (Stark) NP-vollständig
-%     \item Heuristik: AS Rank
-%    \end{itemize}
-%
-%   \end{column}
-%   \begin{column}{0.1\textwidth}
-%
-%   \end{column}
-%   \begin{column}{0.3\textwidth}
-%
-%   \end{column}
-%  \end{columns}
-%
-% \end{frame}
-
-
-
-
-
-\begin{frame}{Modeling the Internet Routing Topology - In Less than 24h}{2009, \cite{Winter:2009:MIR:1577959.1577976}}
-  \begin{columns}[c]
-    \begin{column}{0.5\textwidth}
-      \begin{itemize}
-        \item gewichtete AS-Links
-        \item AS-Graphen berechnen
-        \item eine der Datenquellen für den Routingatlas
-        \item Zugehöriges Projekt leider eingestellt
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.09\textwidth}
-      \begin{figure}
-        \label{winter}
-        \includegraphics[width=1\textwidth]{images/winter_r}
-      \end{figure}
-    \end{column}
-    \begin{column}{0.3\textwidth}
-      {\scriptsize Rolf Winter\\
-      \vspace{0.2cm}
-      NEC Labs Europe\\jetzt: Hochschule Augsburg\\}
-    \end{column}
-  \end{columns}
-\end{frame}
-
-\begin{frame}{Nation-State Routing: Censorship, Wiretapping, and BGP}{2009, \cite{0903.3218v1}}
-  \begin{columns}[c]
-    \begin{column}{0.5\textwidth}
-      \begin{itemize}
-        \item Zuordnung IP-Präfix zu Land
-        \item ...
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.09\textwidth}
-      \begin{figure}
-        \label{karlin}
-        \includegraphics[width=1\textwidth]{images/karlin_j}\\
-        \includegraphics[width=1\textwidth]{images/forrest_s}\\
-        \includegraphics[width=1\textwidth]{images/rexford_j}
-      \end{figure}
-    \end{column}
-    \begin{column}{0.3\textwidth}
-      {\scriptsize Josh Karlin\\
-      \vspace{0.1cm}
-      University of New Mexico\\
-      \vspace{0.7cm}
-      Stephanie Forrest\\
-      \vspace{0.1cm}
-      University of New Mexico\\
-      \vspace{0.5cm}
-      Jennifer Rexford\\
-      \vspace{0.1cm}
-      Princeton University\\ }
-    \end{column}
-  \end{columns}
-\end{frame}
-
-\begin{frame}{IXPs: Mapped?}{2009, \cite{Augustin:2009:IM:1644893.1644934}}
-  \begin{columns}[c]
-    \begin{column}{0.5\textwidth}
-      \begin{itemize}
-        \item Präfixe und Mitglieder von IXPs finden
+        \item IXPs, Mitglieder und Präfixe
+        \item Looking Glass Server in ASen der Mitglieder
         \item traceroutes "durch" die IXPs
-        \item (nicht propagierte) Peerings aufdecken
-        \item AS-Graph vollständiger
       \end{itemize}
+      \begin{figure}
+        \label{augustin_ixp}
+        \includegraphics[width=1\textwidth]{images/augustin_ixp}
+      \end{figure}
     \end{column}
     \begin{column}{0.1\textwidth}
       \begin{figure}
@@ -469,8 +242,145 @@
   \end{columns}
 \end{frame}
 
-\section*{Agenda}
-\begin{frame}{Agenda} \setcounter{tocdepth}{1} \tableofcontents[part=1] \setcounter{tocdepth}{3} \end{frame}
+% achivement: ein Haufen AS-Links/AS-Pfade
+
+\section{Modellierung}
+
+\subsection{Grundlagen}
+\begin{frame}{Modellierung}{Grundlagen}
+  \begin{columns}[c]
+    \begin{column}{0.7\textwidth}
+      \begin{itemize}
+        \item AS Hierarchie
+        \item Routingbeziehung zwischen ASen $\rightarrow$ AS-Link
+      \end{itemize}
+      \begin{description}
+        \item[C2P] Customer zahlt für Transit (a)
+        \item[Peering] kostenneutraler Trafficaustausch (b)\\{\scriptsize(meist) kein Transit}
+        \item[Sibling] kostenneutraler Transit (c)\\{\scriptsize z.B. mehrere ASe eines Konzerns}
+      \end{description}
+    \end{column}
+    \begin{column}{0.3\textwidth}
+      \begin{figure}
+        \includegraphics[width=1\textwidth]{images/Routingbeziehungen}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\subsection{Problemstellung}
+\begin{frame}{Problemstellung}
+  \begin{figure}
+    \includegraphics[width=0.75\textwidth]{images/Topologyinference}
+  \end{figure}
+\end{frame}
+
+
+%\section{AS-Beziehungen, valley-free routing}
+%\begin{frame}{AS-Beziehungen, valley-free routing}
+% \begin{columns}[c]
+%  \begin{column}{0.2\textwidth}
+%  \end{column}
+%  \begin{column}{0.5\textwidth}
+%    \begin{enumerate}
+%     \item[customer-provier] customer zahlt für Transit
+%     \item[peering] kostenloser Trafficaustausch
+%     \item[sibling] kostenloser Transit\\ \vspace{0.5cm}
+%     \item[valley-free routing] Transit nur über ``höhere'' ASes
+%    \end{enumerate}
+%  \end{column}
+%  \begin{column}{0.3\textwidth}
+%   \begin{figure}
+%    \label{asrelations}
+%    \includegraphics[width=1\textwidth]{images/asrelation}
+%   \end{figure}
+%    {\scriptsize }
+%  \end{column}
+% \end{columns}
+%\end{frame}
+
+\subsection{Related Work, Gao}
+\begin{frame}{On Inferring Autonomous System Relationships in the Internet}{2001, \cite{Gao:2001:IAS:504611.504616}}
+  \begin{columns}[c]
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+        \item AS Pfade aus BGP Routing Tabellen
+        \item Knotengrad als Heuristik
+        \item Einordnung in customer-provider/peering/sibling
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.1\textwidth}
+      \begin{figure}
+        \includegraphics[width=1\textwidth]{images/gao}
+        \label{gao}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.3\textwidth}
+      {\scriptsize Lixin Gao\\
+      \vspace{0.1cm}
+      University of Massachusetts\\
+      AT\&T Research Labs}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% \subsection{Related Work, Karlin et al}
+% \begin{frame}{Nation-State Routing: Censorship, Wiretapping, and BGP}{2009, \cite{0903.3218v1}}
+%   \begin{columns}[c]
+%     \begin{column}{0.5\textwidth}
+%       \begin{itemize}
+%         \item Zuordnung IP-Präfix zu Land
+%         \item ...
+%       \end{itemize}
+%     \end{column}
+%     \begin{column}{0.09\textwidth}
+%       \begin{figure}
+%         \label{karlin}
+%         \includegraphics[width=1\textwidth]{images/karlin_j}\\
+%         \includegraphics[width=1\textwidth]{images/forrest_s}\\
+%         \includegraphics[width=1\textwidth]{images/rexford_j}
+%       \end{figure}
+%     \end{column}
+%     \begin{column}{0.3\textwidth}
+%       {\scriptsize Josh Karlin\\
+%       \vspace{0.1cm}
+%       University of New Mexico\\
+%       \vspace{0.7cm}
+%       Stephanie Forrest\\
+%       \vspace{0.1cm}
+%       University of New Mexico\\
+%       \vspace{0.5cm}
+%       Jennifer Rexford\\
+%       \vspace{0.1cm}
+%       Princeton University\\ }
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+\subsection{Related Work, Winter}
+\begin{frame}{Modeling the Internet Routing Topology - In Less than 24h}{2009, \cite{Winter:2009:MIR:1577959.1577976}}
+  \begin{columns}[c]
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+        \item gewichtete AS-Links
+        \item AS-Graphen berechnen
+        \item eine der Datenquellen für den Routingatlas
+        \item Zugehöriges Projekt leider eingestellt
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.09\textwidth}
+      \begin{figure}
+        \label{winter}
+        \includegraphics[width=1\textwidth]{images/winter_r}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.3\textwidth}
+      {\scriptsize Rolf Winter\\
+      \vspace{0.2cm}
+      NEC Labs Europe\\jetzt: Hochschule Augsburg\\}
+    \end{column}
+  \end{columns}
+\end{frame}
 
 \section{Ausblick}
 \begin{frame}{Ausblick}
@@ -487,9 +397,47 @@
 \end{itemize}
 \end{frame}
 
+
+% \begin{frame}{On power-law relationships of the Internet topology}{1999, \cite{Faloutsos:1999:PRI:316194.316229}}
+%   \begin{columns}[c]
+%     \begin{column}{0.5\textwidth}
+%       \begin{itemize}
+%         \item Graphentheoretische Betrachtung der Inter- \& Intradomain Topologie
+%         \item Entdeckung exponentieller Zusammenhänge zwischen
+%         \begin{itemize}
+%           \item ausgehenden Links und Rang eines AS
+%           \item Häufigkeit und Anzahl ausgehender Links
+%           \item Eigen exponent?
+%         \end{itemize}
+%       \end{itemize}
+%     \end{column}
+%     \begin{column}{0.1\textwidth}
+%       \begin{figure}
+%         \includegraphics[width=1\textwidth]{images/faloutsos_m}\\
+%         \includegraphics[width=1\textwidth]{images/faloutsos_p}\\
+%         \includegraphics[width=1\textwidth]{images/faloutsos_c}
+%         \label{faloutsos}
+%       \end{figure}
+%     \end{column}
+%     \begin{column}{0.3\textwidth}
+%       {\scriptsize Micalis Faloutsos\\
+%       \vspace{0.1cm}
+%       University of California\\
+%       \vspace{0.8cm}
+%       Petros Faloutsos\\
+%       \vspace{0.1cm}
+%       University of Toronto\\
+%       \vspace{0.7cm}
+%       Christos Faloutsos\\
+%       \vspace{0.1cm}
+%       Carnegie Mellon University\\ }
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+
 \part{Ende}
-%\section{kthxbye}
-\begin{frame}{Ende}
+\begin{frame}[plain]{Ende}
 \begin{columns}[t]
 \begin{column}{0.5\textwidth}
  \begin{center}
@@ -519,8 +467,8 @@
 
 \section{Bildquellen}
 \begin{frame}[plain]{Bilderquellen}
-  %\scriptsize
-  \tiny
+  \scriptsize
+%   \tiny
   \begin{table}
     \begin{tabular}{ c p{0.8\textwidth} }
       Seite & Quelle \\ \hline
@@ -537,8 +485,9 @@
       \pageref{karlin} & \\
       & \\ \hline
       & \multirow{3}{0.8\textwidth}{\url{http://www-rp.lip6.fr/~augustin/},\\ \url{http://www.njit.edu/news/2011/2011-054.php},\\ \url{http://www.research.att.com/people/Willinger_Walter/index.html?fbid=Y-QjC_arIwn}} \\
-      \pageref{augustin} & \\
+      \pageref{augustin} (rechts) & \\
       & \\ \hline
+      \pageref{augustin_ixp} (links unten) & \url{http://www-rp.lip6.fr/~augustin/ixp/imc2009.pdf} \\ \hline
     \end{tabular}
   \end{table}
 \end{frame}
