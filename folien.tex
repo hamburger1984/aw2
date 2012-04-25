@@ -142,9 +142,9 @@
     \begin{column}{0.4\textwidth}
       passiv
       \begin{itemize}
-        \item RIRs
-        \item Routingtabellen
-        \item Routingupdates
+        \item BGP trace collectors\\{\scriptsize z.B. RouteViews, RIPE RIS}
+        \item Öffentlich zugängliche Router
+        \item Internet Routing Registries\\{\scriptsize z.B. RIPE}
       \end{itemize}
     \end{column}
     \begin{column}{0.4\textwidth}
@@ -156,14 +156,15 @@
   \end{columns}
 \end{frame}
 
-\subsection{Related Work, Zang et al}
+\subsection{Related Work, Zhang et al}
 \begin{frame}{Collection the Internet AS-level Topology}{2005, \cite{Zhang:2005:CIA:1052812.1052825}}
   \begin{columns}[c]
     \begin{column}{0.5\textwidth}
+      ``most complete AS-level topology''
       \begin{itemize}
-        \item ``most complete AS-level topology''
-        \item route servers, looking glasses, routing registries
-        \item routing updates
+        \item Daten verfügbarer Quellen sammeln
+        \item Konsistenzchecks\\{\scriptsize Manuelle gepflegte IRR Einträge}
+        \item
       \end{itemize}
     \end{column}
     \begin{column}{0.08\textwidth}
@@ -195,7 +196,11 @@
   \end{columns}
 \end{frame}
 
+% achivement: ein Haufen AS-Links/AS-Pfade
+
 \section{Modellierung}
+
+
 
 \section{Routing Matrix}
 
