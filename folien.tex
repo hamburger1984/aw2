@@ -61,15 +61,18 @@
       \item Visualisieren
     \end{enumerate}
   \end{itemize}
-  \vspace{1cm}
+  \vspace{0.1cm}
+  {\small
   \begin{thebibliography}{}
     \bibitem{wsbh-envgi-12} ``Exposing a Nation-Centric View on the German Internet – A Change in Perspective on the AS Level''
-    \newblock Wählisch, Matthias and Schmidt, Thomas C. and de Brün, Markus and Häberlen, Thomas (2012)\\[-20pt]
+    \newblock Matthias Wählisch, Thomas C. Schmidt, Markus de Brün, Thomas Häberlen\\
+    \newblock In Proc. of the 13th Passive and Active Measurement Conference (PAM), volume 7192 of LNCS, page 200–210, Berlin Heidelberg, 2012. Springer-Verlag.\\[-20pt]
   \end{thebibliography}
+  }
 \end{frame}
 
 \subsection{Bestandteile des Routingatlas}
-\begin{frame}{Bestandteile des Routingatlas}
+\begin{frame}[allowframebreaks]{Bestandteile des Routingatlas}
   \begin{enumerate}
   \item Identifikation deutscher Autonomer Systeme
   \begin {itemize}
@@ -85,36 +88,63 @@
   \end{itemize}
   \item Routing-Graphen bilden
   \begin{itemize}
-    \item shortest path matrix des NEC-Lab
+    \item Routing Matrix des NEC-Lab
   \end{itemize}
+  \framebreak
   \item Visualisierung der (Teil)Graphen
   \end{enumerate}
+
+  \begin{columns}[c]
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \label{asgraphs}
+        \includegraphics[width=1\textwidth]{images/asgraph_cat5-pos-betweenness}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \includegraphics[width=1\textwidth]{images/asgraph_cat9-dot}
+      \end{figure}
+    \end{column}
+  \end{columns}
 \end{frame}
 
+
+
 \subsection{Ziel}
-%\begin{frame}<1-2>{Ziel}
 \begin{frame}{Ziel}
   \begin{center}
     {\Large Erweiterung des Routing-Atlas}\\
     \vspace{0.5cm}
-    shortest path matrix ersetzen\\
+    Routing Matrix ersetzen\\
     \vspace{0.5cm}
     Dazu:
     \begin{itemize}
-      \item Datenquellen (Routingtabellen, BGP Peering Informationen der IRR)
-      %\item \only<1>{Heuristik zur Bewertung von Inter-AS Links}\only<2>{\textbf{Heuristik zur Bewertung von Inter-AS Links}}
-      \item Heuristik zur Bewertung von Inter-AS Links
-      %\item \only<1>{Kürzeste Wege berechnen}\only<2>{\textbf{Kürzeste Wege berechnen}}
-      \item Kürzeste Wege berechnen
+      \item Datenquellen evaluieren\\{\scriptsize(Routingtabellen, BGP Peering Informationen der IRR, UCLA-Daten, \ldots)}
+      \item Heuristik zur Bewertung von Inter-AS Links\\{\scriptsize(Policy basiertes Routing nachbilden)}
+      \item Routing Matrix berechnen
     \end{itemize}
   \end{center}
 \end{frame}
 
-\section*{Agenda}
-\begin{frame}{Agenda} \setcounter{tocdepth}{1} \tableofcontents[part=1] \setcounter{tocdepth}{3} \end{frame}
+% \section*{Agenda}
+% \begin{frame}{Agenda} \setcounter{tocdepth}{1} \tableofcontents[part=1] \setcounter{tocdepth}{3} \end{frame}
 
-\section{Begriffe, Grundlagen}
-\begin{frame}{Begiffe, Grundlagen}
+\section{Grundlagen}
+\begin{frame}[allowframebreaks]{Grundlagen}{AS-Beziehungen}
+  \begin{itemize}
+    \item Internet: Ansammlung Autonomer Systeme (ASe)
+    \item Routingbeziehung zwischen ASen $\rightarrow$ AS-Link
+  \end{itemize}
+  \begin{description}
+    \item[C2P] \textbf{C}ustomer bezahlt \textbf{P}rovider für Transit
+    \item[PP] \textbf{P}eer-\textbf{P}eer - kostenneutralen Austausch von Traffic
+    \item[Sibling] Mehrere ASe unter gemeinsamer Verwaltung
+  \end{description}
+
+
+
+\framebreak
   \begin{columns}[c]
     \begin{column}{0.75\textwidth}
       \begin{itemize}
@@ -416,9 +446,8 @@
 \begin{column}{0.5\textwidth}
  \vspace{-1cm}
  \begin{figure}
-  \label{asngraph_all}
-%  \includegraphics[width=\textwidth]{asgraph_catall-pos-betweenness}
-%  \caption{AS-Graph (gesamt DE)}
+  \label{asngraphs2}
+  \includegraphics[width=\textwidth]{images/asgraph_cat4-pos}
  \end{figure}
 \end{column}
 \end{columns}
@@ -439,6 +468,7 @@
   \begin{table}
     \begin{tabular}{ c p{0.8\textwidth} }
       Seite & Quelle \\ \hline
+      \pageref{asgraphs}, \pageref{asngraphs2} & \url{http://inet.cpt.haw-hamburg.de/projects/routing-atlas}\\ \hline
       & \multirow{3}{0.8\textwidth}{\url{http://www.cs.ucr.edu/~michalis/},\\ \url{http://www.cse.yorku.ca/cspeople/faculty/pfal/index.html},\\ \url{http://www.cs.cmu.edu/~christos/}} \\
       \pageref{faloutsos}& \\
       & \\ \hline
