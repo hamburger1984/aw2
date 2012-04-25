@@ -47,7 +47,7 @@
 \begin{frame}{Agenda} \setcounter{tocdepth}{1} \tableofcontents[part=1] \setcounter{tocdepth}{3} \end{frame}
 
 \part{Hauptteil}
-\section{Rückblick}
+\section{Intro}
 
 \subsection{Was ist der Routing-Atlas?}
 \begin{frame}{Was ist der Routing-Atlas?}
@@ -130,17 +130,103 @@
 % \section*{Agenda}
 % \begin{frame}{Agenda} \setcounter{tocdepth}{1} \tableofcontents[part=1] \setcounter{tocdepth}{3} \end{frame}
 
+\section{Datenquellen}
+\subsection{Problemstellung}
+\begin{frame}{Datenquellen}
+  \begin{itemize}
+    \item Internet: Ansammlung Autonomer Systeme
+    \item Routingbeziehungen nicht zentral erfasst\\$\rightarrow$ also: Messen, Sammeln
+  \end{itemize}
+
+  \begin{columns}[t]
+    \begin{column}{0.4\textwidth}
+      passiv
+      \begin{itemize}
+        \item RIRs
+        \item Routingtabellen
+        \item Routingupdates
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      aktiv
+      \begin{itemize}
+        \item traceroute
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\subsection{Related Work, Zang et al}
+\begin{frame}{Collection the Internet AS-level Topology}{2005, \cite{Zhang:2005:CIA:1052812.1052825}}
+  \begin{columns}[c]
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+        \item ``most complete AS-level topology''
+        \item route servers, looking glasses, routing registries
+        \item routing updates
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.08\textwidth}
+      \begin{figure}
+        \label{zhang_et_al}
+        \includegraphics[width=1\textwidth]{images/zhang_b}\\
+        \includegraphics[width=1\textwidth]{images/person}\\
+        \includegraphics[width=1\textwidth]{images/massey}\\
+        \includegraphics[width=1\textwidth]{images/zhang_l}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.3\textwidth}
+      {\scriptsize Beichuan Zhang\\
+      \vspace{0.1cm}
+      UCLA\\
+      \vspace{0.7cm}
+      Raymond Liu\\
+      \vspace{0.1cm}
+      UCLA\\
+      \vspace{0.3cm}
+      Daniel Massey\\
+      \vspace{0.1cm}
+      Colorado State University\\
+      \vspace{0.3cm}
+      Lixia Zhang\\
+      \vspace{0.1cm}
+      UCLA\\ }
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{Modellierung}
+
+\section{Routing Matrix}
+
+\section{Fazit}
+
 \section{Grundlagen}
 \begin{frame}[allowframebreaks]{Grundlagen}{AS-Beziehungen}
-  \begin{itemize}
-    \item Internet: Ansammlung Autonomer Systeme (ASe)
-    \item Routingbeziehung zwischen ASen $\rightarrow$ AS-Link
-  \end{itemize}
-  \begin{description}
-    \item[C2P] \textbf{C}ustomer bezahlt \textbf{P}rovider für Transit
-    \item[PP] \textbf{P}eer-\textbf{P}eer - kostenneutralen Austausch von Traffic
-    \item[Sibling] Mehrere ASe unter gemeinsamer Verwaltung
-  \end{description}
+  \begin{columns}[c]
+    \begin{column}{0.75\textwidth}
+      \begin{itemize}
+        \item Internet: Ansammlung Autonomer Systeme (ASe)
+        \item Routingbeziehung zwischen ASen $\rightarrow$ AS-Link
+      \end{itemize}
+      \begin{description}
+        \item[C2P] Customer zahlt für Transit
+        \item[Peering] kostenneutraler Trafficaustausch\\{\scriptsize(meist) kein Transit}
+        \item[Sibling] kostenneutraler Transit\\{\scriptsize z.B. mehrere ASe eines Konzerns}
+      \end{description}
+    \end{column}
+    \begin{column}{0.25\textwidth}
+      \begin{figure}
+        \includegraphics[width=1\textwidth]{images/Routingbeziehungen}
+%         \caption{Routingbeziehungen}
+      \end{figure}
+    \end{column}
+  \end{columns}
+%   \begin{description}
+%     \item[C2P] \textbf{C}ustomer bezahlt \textbf{P}rovider für Transit
+%     \item[PP] \textbf{P}eer-\textbf{P}eer - kostenneutralen Austausch von Traffic
+%     \item[Sibling] Mehrere ASe unter gemeinsamer Verwaltung
+%   \end{description}
 
 
 
@@ -152,8 +238,9 @@
         \item Geschäftsbeziehung zwischen ASen $\rightarrow$ AS Link
       \end{itemize}
       \begin{description}
-        \item[C2P] \textbf{C}ustomer bezahlt \textbf{P}rovider für Transit
-        \item[PP] \textbf{P}eer-\textbf{P}eer - kostenneutralen Austausch von Traffic
+        \item[C2P] Customer zahlt für Transit
+        \item[Peering] kostenneutraler Trafficaustausch\\{\scriptsize(meist) kein Transit}
+        \item[Sibling] kostenneutraler Transit\\{\scriptsize z.B. mehrere ASe eines Konzerns}
       \end{description}
       \begin{itemize}
         \item Öffentlich verfügbar: BGP dumps, traceroutes, looking glass server
@@ -284,43 +371,7 @@
 % \end{frame}
 
 
-\begin{frame}{Collection the Internet AS-level Topology}{2005, \cite{Zhang:2005:CIA:1052812.1052825}}
-  \begin{columns}[c]
-    \begin{column}{0.5\textwidth}
-      \begin{itemize}
-        \item ``most complete AS-level topology''
-        \item route servers, looking glasses, routing registries
-        \item routing updates
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.08\textwidth}
-      \begin{figure}
-        \label{zhang_et_al}
-        \includegraphics[width=1\textwidth]{images/zhang_b}\\
-        \includegraphics[width=1\textwidth]{images/person}\\
-        \includegraphics[width=1\textwidth]{images/massey}\\
-        \includegraphics[width=1\textwidth]{images/zhang_l}
-      \end{figure}
-    \end{column}
-    \begin{column}{0.3\textwidth}
-      {\scriptsize Beichuan Zhang\\
-      \vspace{0.1cm}
-      UCLA\\
-      \vspace{0.7cm}
-      Raymond Liu\\
-      \vspace{0.1cm}
-      UCLA\\
-      \vspace{0.3cm}
-      Daniel Massey\\
-      \vspace{0.1cm}
-      Colorado State University\\
-      \vspace{0.3cm}
-      Lixia Zhang\\
-      \vspace{0.1cm}
-      UCLA\\ }
-    \end{column}
-  \end{columns}
-\end{frame}
+
 
 
 \begin{frame}{Modeling the Internet Routing Topology - In Less than 24h}{2009, \cite{Winter:2009:MIR:1577959.1577976}}
@@ -341,8 +392,8 @@
     \end{column}
     \begin{column}{0.3\textwidth}
       {\scriptsize Rolf Winter\\
-      \vspace{0.1cm}
-      NEC Labs Europe\\ }
+      \vspace{0.2cm}
+      NEC Labs Europe\\jetzt: Hochschule Augsburg\\}
     \end{column}
   \end{columns}
 \end{frame}
