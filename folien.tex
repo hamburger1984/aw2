@@ -304,9 +304,11 @@
   \begin{columns}[c]
     \begin{column}{0.5\textwidth}
       \begin{itemize}
+        \item connectivity vs. reachability
         \item AS Pfade aus BGP Routing Tabellen
         \item Knotengrad als Heuristik
-        \item Einordnung in customer-provider/peering/sibling
+        \item Einordnung in C2P, Peering, Sibling
+        \item Valley-free Routing
       \end{itemize}
     \end{column}
     \begin{column}{0.1\textwidth}
@@ -319,7 +321,7 @@
       {\scriptsize Lixin Gao\\
       \vspace{0.1cm}
       University of Massachusetts\\
-      AT\&T Research Labs}
+      AT\&T Research Labs\\}
     \end{column}
   \end{columns}
 \end{frame}
@@ -362,11 +364,16 @@
   \begin{columns}[c]
     \begin{column}{0.5\textwidth}
       \begin{itemize}
-        \item gewichtete AS-Links
-        \item AS-Graphen berechnen
-        \item eine der Datenquellen für den Routingatlas
-        \item Zugehöriges Projekt leider eingestellt
+        \item Präfix vs. AS Graph
+        \item AS-Links aus den UCLA Daten\\{\scriptsize{(s. Folie \pageref{zhang_et_al})}}
+        \item Bewertung der Links
+        \item Routing Matrix berechnen
       \end{itemize}
+      {\small
+      \begin{itemize}
+        \item Routing Matrix ist eine der Datenquellen für den Routing-Atlas
+        \item Projekt leider eingestellt
+      \end{itemize}}
     \end{column}
     \begin{column}{0.09\textwidth}
       \begin{figure}
@@ -382,19 +389,32 @@
   \end{columns}
 \end{frame}
 
+
 \section{Ausblick}
 \begin{frame}{Ausblick}
-\begin{itemize}
- \item Aktuelle shortest path matrix
- \begin{itemize}
-  \item Topologieänderungen
- \end{itemize}\vspace{1cm}
- \item Andere Länder, Visualisierungen, Online-Tool, IPv6
- \begin{itemize}
-  \item Breiteres Publikum
-  \item Zukunftsfähigkeit
- \end{itemize}
-\end{itemize}
+  \begin{itemize}
+    \item Projekt 1
+    \begin{itemize}
+      \item Routing Matrix aktualisieren
+    \end{itemize}
+    \item Später..
+    \begin{itemize}
+      \item Weitere Datenquellen (IXPs, Peering, \ldots)
+      \item Regelmäßige Veröffentlichung aktueller Daten
+      \item Peeroskop
+    \end{itemize}
+  \end{itemize}
+% \begin{itemize}
+%  \item Aktuelle shortest path matrix
+%  \begin{itemize}
+%   \item Topologieänderungen
+%  \end{itemize}\vspace{1cm}
+%  \item Andere Länder, Visualisierungen, Online-Tool, IPv6
+%  \begin{itemize}
+%   \item Breiteres Publikum
+%   \item Zukunftsfähigkeit
+%  \end{itemize}
+% \end{itemize}
 \end{frame}
 
 
@@ -435,8 +455,8 @@
 %   \end{columns}
 % \end{frame}
 
-
 \part{Ende}
+\subsection{kthxbye}
 \begin{frame}[plain]{Ende}
 \begin{columns}[t]
 \begin{column}{0.5\textwidth}
