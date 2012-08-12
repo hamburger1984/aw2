@@ -1,2 +1,2 @@
 all:
-	rubber -d folien.tex
+	rubber --inplace -d vortrag/folien.tex
