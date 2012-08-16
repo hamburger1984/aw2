@@ -1,0 +1,56 @@
+\input{einstellungen/grundeinstellungen} % Die stilistischen Parameter
+
+%---------------------------------------------------------------------------------------------------
+% Anfang des Schriftstücks
+%---------------------------------------------------------------------------------------------------
+\begin{document}
+
+%---------------------------------------------------------------------------------------------------
+% Erstellen des Deck- und des Titelblatts
+%---------------------------------------------------------------------------------------------------
+\createCover{Erweiterung des Routing-Atlas\\
+WiSe 2011/2012} % Art der Arbeit
+{Andreas Krohn} % Author
+{Ausarbeitung: Related Work (AW2)} % Title
+
+%---------------------------------------------------------------------------------------------------
+% Zusammenfassung}
+%---------------------------------------------------------------------------------------------------
+% \input{standard/mabstrakt.tex}
+
+%---------------------------------------------------------------------------------------------------
+% Verzeichnisse
+%---------------------------------------------------------------------------------------------------
+\tableofcontents % Inhaltsverzeichnis
+% \listoftables % Tabellenverzeichnis
+% \listoffigures % Abbildungsverzeichnis
+
+% \input{kapitel/01einfuehrung/einfuehrung.tex}
+% \input{kapitel/02routingatlas/routingatlas.tex}
+% \input{kapitel/03zielsetzung/zielsetzung.tex}
+% \input{kapitel/04konzept/konzept.tex}
+% \input{kapitel/05herausforderungen/herausforderungen.tex}
+% \input{kapitel/06ausblick/ausblick.tex}
+% \input{kapitel/07schluss/schluss.tex}
+
+\input{kapitel/einfuehrung.tex}
+\input{kapitel/routingatlas.tex}
+\input{kapitel/zielsetzung.tex}
+\input{kapitel/datenquellen.tex}
+\input{kapitel/modellierung.tex}
+\input{kapitel/ausblick.tex}
+\input{kapitel/schluss.tex}
+
+
+%---------------------------------------------------------------------------------------------------
+% Literaturverzeichnis
+%---------------------------------------------------------------------------------------------------
+%\bibliographystyle{dinat} % Anpassung an deutsche Zitierweise: Alphabetische Sortierung, Abkürzungen
+%\bibliographystyle{unsrt}
+\bibliographystyle{IEEEtran} % dinat.bst fehlt, kein format für @ONLINE, gefällt mir so irgendwie besser..
+\bibliography{literatur/literatur2} % Literaturverzeichnis
+
+%---------------------------------------------------------------------------------------------------
+% Ende des Schriftstücks
+%---------------------------------------------------------------------------------------------------
+\end{document}
