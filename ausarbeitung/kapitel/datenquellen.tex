@@ -1,23 +1,42 @@
 \section{Datenquellen}\label{sec:datenquellen}
 
-Das Internet ist eine Menge untereinander verbundener Netze, den autonomen
-Systemen (ASe). Die Verwaltung dieser Netze obliegt jeweils dem Besitzer. Es
-gibt nicht eine zentrale Verwaltung, die über sämtliche Informationen verfügt.
-Diese Aufgabe erfüllen lokale Registries (RIRs), bei denen beispielsweise eine
-ASN beantragt werden kann. Die Existenz und einige Informationen zu einem AS
-lassen sich bei den RIRs prüfen. Die Existenz und Konditionen der Verbindung
-zweier ASe wird nicht erfasst, sondern lässt sich aus aktiven Messungen und der
-Auswertung von Routingtabellen mehr oder weniger präzise herleiten. Die
-Information, ob ASe miteinander verbunden sind und welcher Art diese Verbindung
-ist ermöglicht die Berechnung der Topologie des Internets auf AS Ebene.
+Das Internet ist eine Menge untereinander verbundener Netze, den autonomen Systemen (ASe).
+Die Verwaltung dieser Netze obliegt jeweils dem Besitzer. Es gibt nicht eine zentrale Verwaltung, die über sämtliche Informationen verfügt.
+Diese Aufgabe erfüllen lokale Registries (RIRs), bei denen beispielsweise eine ASN beantragt werden kann.
+Die Existenz eines AS und einige Informationen zu einem AS lassen sich bei den RIRs prüfen.
+Die Existenz und Konditionen der Verbindung zweier ASe wird nicht erfasst, sondern lässt sich aus aktiven Messungen und der Auswertung von Routingtabellen mehr oder weniger präzise herleiten.
+Die Information, ob ASe miteinander verbunden sind und welcher Art diese Verbindung ist ermöglicht die Berechnung der Topologie des Internets auf AS Ebene.
 
-Als Beispiel für das passive Methoden der Datensammlung dient hier die Arbeit
-von Beichuan Zhang et\ al., für aktive Methoden der Beitrag von Brice Augusting
-et\ al..
+Als Beispiel für das passive Methoden der Datensammlung dient hier die Arbeit von Lixia Zhang et\ al., für aktive Methoden der Beitrag von Brice Augusting et\ al..
 
 \subsection{Collecting the Internet AS-level Topology~\cite{Zhang:2005:CIA:1052812.1052825}}
 
-Sammeln Daten und stellen sie täglich aktualisiert bereit\footnote{\url{http://irl.cs.ucla.edu/topology/}}
+Beichuan Zhang, Raymond Liu, Lixia Zhang (alle UCLA) und Daniel Massey (Colorado State University) veröffentlichten im Januar 2005 den Artikel "`Collecting the Internet AS-level Topology"'.
+Darin beschreiben sie die Schaffung einer gegenüber vorher existierenden Ansätzen vollständigeren Datenbasis für Topologieanalysen auf AS-Ebene.
+
+\subsubsection{Übersicht}
+Die Gruppe um Lixia Zhang ergänzt die üblicherweise verwendeten Topologiedaten des Route Views Projekts\footnote{\url{http://www.routeviews.org/}} und des RIPE RIS\footnote{\url{http://ripe.net/ris}} und stellt diese täglich aktualisiert unter \url{http://irl.cs.ucla.edu/topology/} zur Verfügung.
+Weiterhin basierten Topologieanalysen bisher meist auf statischen Schnappschüssen zu einem bestimmten Zeitpunkt.
+Zwischen ASen existieren jedoch meist mehrere verbindende Pfade, wovon der sekundäre erst bei Ausfall des primären sichbar werden kann.
+Um derartige Konstellationen zu erfassen, werden die Routinginformationen kontinuierlich gesammelt und auf Linkebene mit weiteren Informationen (Zeitpunkt \& Quelle der Beobachtung) versehen.
+So werden Analysen über die Stabilität der Topologie und Änderungsraten von Pfaden möglich.
+
+\subsubsection{Verwendete Datenquellen}
+Route Views und RIPE RIS sammeln ihre Topologiedaten mittels \emph{BGP trace collector}.
+Dies ist ein PC oder Router, der von ISPs BGP Nachrichten erhält und speichert, jedoch selber keine Routen bekannt gibt.
+Routingtabellen und -updates werden in regelmäßigen Abständen abgeholt und veröffentlicht.
+Die Berücksichtigung der Routingupdates führt hierbei dazu, dass auch nicht aktuell für das Routing verwendete Pfade erfasst werden.\\
+
+Ergänzt werden diese Daten um Routingtabellen öffentlich zugänglicher \emph{Routingserver} einiger ISPs.
+Die Routingtabellen enthalten weitere verwendete Pfade.
+Alternativrouten können aufgrund dieser Datenquelle nur durch die Beobachtung über einen längeren Zeitraum gefunden werden.
+Weiterhin speichert ein Routingserver keine Historie der Routingtabellen.
+Es muss also in regelmäßigen Intervallen von außen der Dump der Routingtabelle angefordert und dort gespeichert werden.\\
+
+\emph{Looking glasses} sind Server, die über eine Weboberfläche die Ausführung bestimmter Befehle auf einem Router ermöglichen.
+Vollständige Routingtabellen lassen sich hier meist nicht abfragen aber immerhin direkte Nachbarn und Zugehörigkeit zu einem AS.
+So liefert ein Looking glas Server jeweils einige Links (zu seinen Nachbarn), jedoch keine längeren Pfade (wie sie in einer Routingtabelle stehen würden).
+
 
 
 \subsection{IXPs: Mapped?~\cite{Augustin:2009:IM:1644893.1644934}}
