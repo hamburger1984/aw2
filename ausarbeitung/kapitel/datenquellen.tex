@@ -20,12 +20,17 @@ Weiterhin basierten Topologieanalysen bisher meist auf statischen Schnappschüss
 Zwischen ASen existieren jedoch meist mehrere verbindende Pfade, wovon der sekundäre erst bei Ausfall des primären sichbar werden kann.
 Um derartige Konstellationen zu erfassen, werden die Routinginformationen kontinuierlich gesammelt und auf Linkebene mit weiteren Informationen (Zeitpunkt \& Quelle der Beobachtung) versehen.
 So werden Analysen über die Stabilität der Topologie und Änderungsraten von Pfaden möglich.
+Weiterhin wurde untersucht nach welcher Zeitspanne ohne erneute Beobachtung ein Link als nicht mehr existent betrachtet werden kann.
+Diese Information dient der sinnvollen Auswahl zu verwendender Links um eine einerseits möglichst komplette Topologie zu erhalten, andererseits aber die Verwendung nicht existenter Links zu vermeiden.
 
 \subsubsection{Verwendete Datenquellen}
 Route Views und RIPE RIS sammeln ihre Topologiedaten mittels \emph{BGP trace collector}.
-Dies ist ein PC oder Router, der von ISPs BGP Nachrichten erhält und speichert, jedoch selber keine Routen bekannt gibt.
+Ein BGP trace collector ist ein PC oder Router, der von ISPs BGP Nachrichten erhält und speichert, jedoch selber keine Routen bekannt gibt.
 Routingtabellen und -updates werden in regelmäßigen Abständen abgeholt und veröffentlicht.
-Die Berücksichtigung der Routingupdates führt hierbei dazu, dass auch nicht aktuell für das Routing verwendete Pfade erfasst werden.\\
+Die Berücksichtigung der Routingupdates führt hierbei dazu, dass auch nicht aktuell für das Routing verwendete Pfade erfasst werden.
+Gleichzeitig bergen Aggregierung der Links über die Zeit und Verarbeitung der Routingupdates die Gefahr, dass Fehlkonfigurationen, "`abgeschaltete"' Links oder temporäre Störungen in eine finale Topologie aufgenommen werden und so Analyseergebnisse verfälschen.
+Mittels der den Links angefügten Zeitstempel der letzten Beobachtung lassen sich derartige Links aus dem Datenbestand herausfiltern.
+Die Autoren haben hier eine Zeitspanne von 60 Tagen ohne erneute Beobachtung des Links als gutes Indiz für das dauerhafte Verschwinden eines Links ermittelt.\\
 
 Ergänzt werden diese Daten um Routingtabellen öffentlich zugänglicher \emph{Routingserver} einiger ISPs.
 Die Routingtabellen enthalten weitere verwendete Pfade.
@@ -35,9 +40,24 @@ Es muss also in regelmäßigen Intervallen von außen der Dump der Routingtabell
 
 \emph{Looking glasses} sind Server, die über eine Weboberfläche die Ausführung bestimmter Befehle auf einem Router ermöglichen.
 Vollständige Routingtabellen lassen sich hier meist nicht abfragen aber immerhin direkte Nachbarn und Zugehörigkeit zu einem AS.
-So liefert ein Looking glas Server jeweils einige Links (zu seinen Nachbarn), jedoch keine längeren Pfade (wie sie in einer Routingtabelle stehen würden).
+So liefert ein Looking glas Server jeweils einige Links (zu Nachbarn), aber keine längeren Pfade (wie sie in einer Routingtabelle stehen würden).
+Der Beitrag zur Topologie ist dennoch verhältnismäßig groß, da sich Pfade oft nur in den "`unteren"' Regionen der Routinghierarchie unterscheiden.
+Gerade in diesem Bereich liefern looking glasses Informationen, die in anderen Routingtabellen oft nicht auftauchen.\\
 
+\emph{Internet Routing Registries} (IRR) bieten den Betreibern von ASen die Möglichkeit, Informationen über Links zu anderen ASen zu hinterlegen.
+Diese Infomationen sind optional und müssen manuell gepflegt werden.
+Sie sind daher in vielen IRRs nicht aktuell, falsch oder schlicht nicht vorhanden.
+Da IXPs in Europa von ihren Mitgliedern vermehrt die Pflege dieser Routing policy Angaben fordern, sind die Daten der RIPE von vergleichsweise guter Qualität.
+Das Team um Lixia Zhang verwendet diese Daten zur Ergänzung der gesammelten Topologiedaten.
+Über Konsistenzchecks (z.B. gibt es bei anderen ASen widersprüchliche Angaben?) soll sichergestellt werden, mit den IRR-Daten sinnvolle Informationen zur Topologie hinzuzufügen und fehlerhafte Daten auszuschließen.
 
+\subsubsection{Beitrag}
+Das Team um Lixia Zhang hebt drei Aspekte der Ergebnisse hervor.
+\begin{itemize}
+  \item Erstellung einer gegenüber den Routingtabellen von Route Views in RIPE RIS vollständigeren Topologie durch die Berücksichtigung der Routingupdates
+  \item Akkumulierung der Topologiedaten über einen längeren Zeitraum sowie das Finden der Zeitspanne nach der ein Link als tot betrachtet werden kann.
+  \item Das kontinuierliche Verfügbarmachen der Daten als Basis für weitere Analysen anderer Interessenten.
+\end{itemize}
 
 \subsection{IXPs: Mapped?~\cite{Augustin:2009:IM:1644893.1644934}}
 
