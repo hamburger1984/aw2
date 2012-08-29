@@ -76,9 +76,29 @@ Sie verwenden hierbei ein aktives Messverfahren, bei dem gezielt traceroute ausg
 
 \subsubsection{Vorgehensweise}
 Zunächst erstellen die Autoren eine Liste der IXPs und deren jeweiligen Mitgliedern.
-Im nächsten Schritt wird für jeden IXP in den ASen der Mitglieder ein öffentlich zugänglicher traceroute Server gesucht.
-Anschließend wird die Liste der IXPs, der Mitglieder und der traceroute Server verwendet, um für jeden IXP ein traceroute zwischen den Mitgliedern durchzuführen.
-Tauchen dabei Pfade der Form @AS1 - @IXP - @AS2 auf (wobei das "`@"' eine Adresse in einem Präfix des ASes bzw. IXPs meint), ist davon auszugehen, dass am untersuchten IXP ein Peering zwischen den Mitgliedern AS1 und AS2 existiert.
+Zur Ermittlung der IXPs werden Datenbanken von Packet Clearing House und von PeeringDB genutzt.
+Die Internetauftritte der IXPs werden mittels Parser analysiert, um die jeweiligen Mitglieder zu ermitteln.
+Im nächsten Schritt in den ASen der Mitglieder ein öffentlich zugänglicher traceroute Server gesucht.
+Insgesamt haben die Autoren 278 IXPs mit 393 Präfixen und ca. 2300 traceroute Server gefunden.
+Die Liste der IXPs, der Mitglieder und der traceroute Server wird verwendet, um für jedes Mitgliederpaar jedes IXPs traceroute durchzuführen.
+Tauchen dabei Pfade der Form @AS1 - @IXP4 - @AS4 auf (wobei das "`@"' eine Adresse in einem Präfix des ASes bzw. IXPs meint), ist dies ein starkes Indiz dafür, dass am untersuchten IXP ein Peering zwischen den Mitgliedern AS1 und AS4 existiert (vgl. Abb.~\ref{fig:augustin_ixp}).
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=1\textwidth]{augustin_ixp}
+    \caption{Typische IXP Konfiguration mit 6 Mitgliedern} \label{fig:augustin_ixp}
+  \end{center}
+\end{figure}
+Kritisch ist hierbei die Wahl des passenden traceroute Servers aber auch eine gewisse Vorsicht bei der Interpretation der Ergebnisse.
+Die Tatsache, dass der Server im Netz des untersuchten ASes bedeutet nicht, dass aus Auftauchen oder Abwesenheit des oben beschriebenen Pfades mit Sicherheit auf die (Nicht-)Existenz des Peerings geschlossen werden kann.
+Vor allem die Abwesenheit des Pfades ist trotz eines existierenden Peerings möglich.
+IXPs vergeben an die teilnehmenden Router beispielsweise private IP-Adressen, auf die von außen nicht zugegriffen werden kann.
 
+Weiterhin ist der Aufwand verglichen mit der Analyse vorhandener BGP dumps und updates verhältnismäßig hoch.
+Es müssen aktiv Pakete gesendet und dabei timeouts abgewartet werden.
+Außerdem ist die Gefahr, verfälschte Daten zu erhalten beim traceroute höher als bei der Analyse von BGP Daten, die zum Routing verwendet werden.
 
+\subsubsection{Beitrag}
+Augustin et~al. haben gezeigt, dass ein signifikanter Anteil der peer-to-peer Links alleine durch die Analyse von BGP dumps und updates nicht erfasst wird.
+Weiterhin haben sie eine Liste von IXPs, deren Präfixen und Mitgliedern aufgebaut und traceroute Server in den ASen der Mitglieder identifiziert.
+Diese Informationen wurden genutzt, um per gezieltem traceroute bisher nicht entdeckte Links an IXPs zu finden.
 
