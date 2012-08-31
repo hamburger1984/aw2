@@ -11,7 +11,7 @@ Dieses Konzept bezeichnet man als das Valley-free Routing.
 Über ein Modell sollen rohe Daten wie BGP Tabellen um Klassifizierungen erweitert werden um auf Basis des so entstehenden attributierten AS-Graphen Analysen ausführen zu können.
 
 \subsection{On Inferring Autonomous System Relationships in the Internet}
-Grundlegende und viel beachtete Arbeit im Bereich der Klassifizierung von AS Beziehungen hat Lixin Gao mit der im folgenden Abschnitt vorgestellten Arbeit geleistet~\cite{Gao:2001:IAS:504611.504616}.
+Grundlegende und viel beachtete Arbeit im Bereich der Klassifizierung von AS Beziehungen hat Lixin Gao (University of Massachusetts, damals AT\&T Research Labs) mit der im folgenden Abschnitt vorgestellten Arbeit geleistet~\cite{Gao:2001:IAS:504611.504616}.
 Das Prinzip des valley-free Routings führt zu der Erkenntnis, dass Verbindung im Internet nicht Erreichbarkeit bedeuten muss.
 Der Transport von Daten folgt policies, die über das BGP Protokoll implementiert werden.
 Ziel der Arbeit von Lixin Gao ist es die Kanten eines AS Graphen zu annotieren, also die Links zu klassifizieren.
@@ -30,8 +30,10 @@ Die Links im Pfad bis zum größten AS (uphill) werden als Nutzer von Transit, d
 In einer weiteren Phase geschieht nun die eigentliche Klassifizierung.
 Ist ein Paar aus ASen in beide Richtungen als Transit markiert, so gehört dieser Link in die Klasse "`sibling"'.
 Ist ein Paar aus ASen Nutzer von Transit aber selten oder nie Anbieter, ist der Link ein "`customer-provider"'-Link, überwiegt die Anbieterrolle "`provider-customer"'.
+Die so hergeleiteten Klassifizierungen der AS Beziehungen wurden mit intern vorhandenen Informationen von AT\&T abgeglichen wobei eine Übereinstimmung von 99,1\% festgestellt wurde.
 
 \subsubsection{Beitrag}
+Lixin Gao hat mit ihrer Arbeit grundlegende Ideen zur Herleitung einer Klassifizierung von AS Beziehungen geprägt.
 
 \subsection{Modeling the Internet Routing Topology - in less than 24h}\label{subsec:winter}
 Der attributierte AS-Graph liefert Informationen über Existenz und Art der Verbindung der ASe.
