@@ -37,9 +37,21 @@ Ist ein Paar aus ASen Nutzer von Transit aber selten oder nie Anbieter, ist der 
 Der attributierte AS-Graph liefert Informationen über Existenz und Art der Verbindung der ASe.
 Der Weg, den der Datenpakete zwischen zwei ASen traversiert, lässt sich hieraus jedoch nicht ablesen.
 Rolf Winter (damals NEC Labs Europe, jetzt Hochschule Augsburg) beschreibt in seinem Artikel "`Modeling the Internet Routing Topology - in less than 24h"'~\cite{conf/pads/Winter09} einen Ansatz, die kürzesten Wege zwischen allen AS-Paaren unter Berücksichtigung eines Modells von BGP zu berechnen.
+Die Ergebnisse der Arbeit sind unter \url{http://topology.neclab.eu/} veröffentlicht.
 
 \subsubsection{Vorgehensweise}
-....
+Winter nutzt die Daten des in Abschnitt~\ref{subsec:collecting} vorgestellten Projekts der UCLA als Basisdaten seiner Analyse.
+Aus diesen Daten sollen innerhalb der schon im Titel erwähnten maximal 24 Stunden die kürzesten Pfade für alle AS Paare errechnet werden.
+Die Betrachtung der Internettopologie auf Ebene der ASe stellt eine Vereinfachung dar.
+Das Routing findet tatsächlich auf Ebene der Präfixe statt.
+Laut Winter ist diese Vereinfachung aber zulässig, da der überwiegende Teil der Pfade zwischen zwei ASen unabhängig vom Quell- oder Zielpräfix identisch sind und somit kein signifikanter Verlust an Information zu erwarten ist.
+Als weitere Rechtfertigung für die Beschränkung auf die AS Ebene dient die Zeitvorgabe.
+Die Berechnung der kürzesten Pfade auf Ebene der Präfixe wäre komplexer und würde so die zeitnahe Bereitstellung aktueller Pfadmatrizen verhindern.
+Das all-pair shortest path Problem - also die Berechnung der kürzesten Wege - löst Winter mit dem Floyd-Warshall Algorithmus.
+Die Kantengewichte für die Modellierung der BGP policies basieren hierbei auf der relativen Häufigkeit, mit der die ausgehenden Links eines AS in beobachteten Routingtabellen vorhanden sind.
+
+In einem weiteren Schritt werden BGP Tabellen von RouteViews und RIPE RIS in unverarbeiteter Form zur Validierung der errechneten Pfade genutzt.
+Bei erfolgreicher Nachbildung des policy based routings in BGP müssten die errechneten Pfade in den BGP Tabellen auftauchen.
 
 
 \subsubsection{Beitrag}
