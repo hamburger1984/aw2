@@ -1,6 +1,6 @@
 \section{Routing-Atlas}\label{sec:atlas}
 
-Der Routing-Atlas ist ein Projekt der inet AG in Zusammenarbeit mit dem Bundesamt für Sicherheit in der Informationstechnik (BSI), \vgl \cite{waehlisch2010towards,waehlisch2010framework,schmidt2010}.
+Der Routing-Atlas ist ein Projekt der inet AG in Zusammenarbeit mit dem Bundesamt für Sicherheit in der Informationstechnik (BSI), \vgl \cite{wsbh-envgi-12}.
 Angesichts der wachsenden Bedeutung des Internet als kritische Infrastruktur für Wirtschaft, Verwaltung und Bildung und der zunehmenden Regulierung dieses Mediums stellt sich die Frage welche Akteure und Jurisdiktionen Einfluss nehmen können.
 Ziel des Projektes ist es landesspezifische Teile des Internet und Abhängigkeiten zwischen Ländern zu identifizieren, zu klassifizieren und zu visualisieren.
 Damit kann zum Beispiel abgeschätzt werden:
@@ -47,14 +47,13 @@ Durch die Nutzung mehrerer Datenquellen bleiben nur wenige Präfixe ($\approx 2\
 %\subsection{Klassifikation der ASe}
 %TODO
 
-\subsection{Bildung des AS Graphen}
-\label{atlas:graph}
+\subsection{Bildung des AS Graphen}\label{atlas:graph}
 
 Am NEC-Lab wurde im Rahmen eines europäischen Forschungsprojektes ein Modell der Routing-Topologie des Internets auf Ebene der Autonomen Systeme erstellt~\cite{conf/pads/Winter09}.
 Hierfür wurden die vom Internet Research Lab der UCLA gesammelten und aggregierten Daten genutzt~\cite{IRLtopology}.
 Ein Ergebnis dieses Modells ist die next hop matrix.
 Sie beinhaltet für die Wege von einem AS zu einem anderen jeweilse das nächste AS, über das ein Paket geroutet werden würde.
-Auf die Generierung der next hop matrix wird in Abschnitt~\ref{sec:winter} eingegangen.
+Auf die Generierung der next hop matrix wird in Abschnitt~\ref{subsec:winter} eingegangen.
 
 Der Routing-Atlas verwendet die next hop matrix, um einen Graphen aller im vorherigen Schritt identifizierten Autonomen Systeme zu bilden.
 Dieser Graph umfasst neben den "`deutschen"' ASen auch jene, die für die Verbindung sorgen und im Ausland liegen - die Transit-ASe.

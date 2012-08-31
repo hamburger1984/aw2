@@ -8,19 +8,20 @@ Dabei wird von einem weitesgehend hierarchischem Aufbau AS Topologie ausgegangen
 Die zentraleren Transit oder Tier-1 ASe leiten hierbei Daten für die kleineren ASe weiter.
 Kleinere ASe bieten dagegen keinen Transit für größere ASe an.
 Dieses Konzept bezeichnet man als das Valley-free Routing.
-Grundlegende und viel beachtete Arbeit im Bereich der Klassifizierung von AS Beziehungen hat Lixin Gao mit der im folgenden Abschnitt vorgestellten Arbeit geleistet.
+Über ein Modell sollen rohe Daten wie BGP Tabellen um Klassifizierungen erweitert werden um auf Basis des so entstehenden attributierten AS-Graphen Analysen ausführen zu können.
 
-\subsection{On Inferring Autonomous System Relationships in the Internet~\cite{Gao:2001:IAS:504611.504616}}
+\subsection{On Inferring Autonomous System Relationships in the Internet}
+Grundlegende und viel beachtete Arbeit im Bereich der Klassifizierung von AS Beziehungen hat Lixin Gao mit der im folgenden Abschnitt vorgestellten Arbeit geleistet~\cite{Gao:2001:IAS:504611.504616}.
 Das Prinzip des valley-free Routings führt zu der Erkenntnis, dass Verbindung im Internet nicht Erreichbarkeit bedeuten muss.
 Der Transport von Daten folgt policies, die über das BGP Protokoll implementiert werden.
-Ziel der Arbeit von Lixin Gao war es also die Kanten eines AS Graphen zu annotieren, also die Links zu klassifizieren.
+Ziel der Arbeit von Lixin Gao ist es die Kanten eines AS Graphen zu annotieren, also die Links zu klassifizieren.
 Die Klassen sind dabei:
 \begin{itemize}
   \item customer-provider
   \item peering
   \item sibling
 \end{itemize}
-Da die Geschäftsbeziehung mehrerer ASe Ursache für die Gestaltung von BGP tables, nicht aber deren Bestandteil sind, soll diese Information über eine Heuristik hergeleitet werden.
+Da die Geschäftsbeziehung mehrerer ASe Ursache für die Gestaltung von BGP tables, nicht aber deren Bestandteil sind, wird diese Information über eine Heuristik hergeleitet.
 
 \subsubsection{Vorgehensweise}
 Für eine Menge von BGP Tabellen wird der Verzweigungsgrad der ASe bestimmt, der später als Indiz für die Größe des ASes verwendet wird.
@@ -30,4 +31,16 @@ In einer weiteren Phase geschieht nun die eigentliche Klassifizierung.
 Ist ein Paar aus ASen in beide Richtungen als Transit markiert, so gehört dieser Link in die Klasse "`sibling"'.
 Ist ein Paar aus ASen Nutzer von Transit aber selten oder nie Anbieter, ist der Link ein "`customer-provider"'-Link, überwiegt die Anbieterrolle "`provider-customer"'.
 
-\subsection{Modeling the Internet Routing Topology - in less than 24h~\cite{conf/pads/Winter09}}
+\subsubsection{Beitrag}
+
+\subsection{Modeling the Internet Routing Topology - in less than 24h}\label{subsec:winter}
+Der attributierte AS-Graph liefert Informationen über Existenz und Art der Verbindung der ASe.
+Der Weg, den der Datenpakete zwischen zwei ASen traversiert, lässt sich hieraus jedoch nicht ablesen.
+Rolf Winter (damals NEC Labs Europe, jetzt Hochschule Augsburg) beschreibt in seinem Artikel "`Modeling the Internet Routing Topology - in less than 24h"'~\cite{conf/pads/Winter09} einen Ansatz, die kürzesten Wege zwischen allen AS-Paaren unter Berücksichtigung eines Modells von BGP zu berechnen.
+
+\subsubsection{Vorgehensweise}
+....
+
+
+\subsubsection{Beitrag}
+....
