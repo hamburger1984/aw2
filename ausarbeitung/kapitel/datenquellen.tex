@@ -4,7 +4,7 @@ Das Internet ist eine Menge untereinander verbundener Netze, den autonomen Syste
 Die Verwaltung dieser Netze obliegt jeweils dem Besitzer. Es gibt nicht eine zentrale Verwaltung, die über sämtliche Informationen verfügt.
 Diese Aufgabe erfüllen lokale Registries (RIRs), bei denen beispielsweise eine ASN beantragt werden kann.
 Die Existenz eines AS und einige Informationen zu einem AS lassen sich bei den RIRs prüfen.
-Die Existenz und Konditionen der Verbindung zweier ASe wird nicht erfasst, sondern lässt sich aus aktiven Messungen und der Auswertung von Routingtabellen mehr oder weniger präzise herleiten.
+Die Existenz und Konditionen der Verbindung zweier ASe wird nicht verpflichtend und vollständig erfasst, sondern lässt sich aus aktiven Messungen und der Auswertung von Routingtabellen mehr oder weniger präzise herleiten.
 Die Information, ob ASe miteinander verbunden sind und welcher Art diese Verbindung ist ermöglicht die Berechnung der Topologie des Internets auf AS Ebene.
 
 Als Beispiel für das passive Methoden der Datensammlung dient hier die Arbeit von Beichuan Zhang et\ al., für aktive Methoden der Beitrag von Brice Augusting et\ al..
@@ -69,7 +69,7 @@ Die Resultate dieser Arbeit wurden unter \url{http://www-rp.lip6.fr/~augustin/ix
 Der klassische Ansatz eine Topologie der ASe zu erstellen nutzt - wie z.B. im Paper von Lixia Zhang beschrieben - BGP dumps oder updates.
 Die Analyse der BGP dumps und updates ist ein passives Verfahren - es wird also nur vorhandener Datenverkehr gemessen und aktiv keine Pakete erzeugt.
 Hierbei wird ein Großteil der ASe und deren Links entdeckt.
-In der Natur von peer-to-peer Links liegt es jedoch, dass diese in per BGP kommunizierten Routen nicht auftauchen.
+In der Natur von peer-to-peer Links liegt es jedoch, dass diese in per BGP kommunizierten Routen nicht zwingend auftauchen.
 Peeringvereinbarungen werden zwischen Paaren von ASen geschlossen und beinhalten den kostenlosen Austausch von Traffic, jedoch in der Regel nicht das Routing in weitere ASe.
 Somit ist der peer-to-peer Link den beteiligten ASen bekannt, den umliegenden ASen (mangels Bekanntgabe der Route) jedoch nicht.
 Die Autoren präsentieren einen Ansatz, eben diese Links dennoch zu finden.
@@ -77,7 +77,7 @@ Sie verwenden hierbei ein aktives Messverfahren, bei dem gezielt traceroute ausg
 
 \subsubsection{Vorgehensweise}
 Zunächst erstellen die Autoren eine Liste der IXPs und deren jeweiligen Mitgliedern.
-Zur Ermittlung der IXPs werden Datenbanken von Packet Clearing House und von PeeringDB genutzt.
+Zur Ermittlung der IXPs werden Datenbanken von Packet Clearing House\footnote{\url{http://www.pch.net/}} und von PeeringDB\footnote{\url{http://www.peeringdb.com/}} genutzt.
 Die Internetauftritte der IXPs werden mittels Parser analysiert, um die jeweiligen Mitglieder zu ermitteln.
 Im nächsten Schritt in den ASen der Mitglieder ein öffentlich zugänglicher traceroute Server gesucht.
 Insgesamt haben die Autoren 278 IXPs mit 393 Präfixen und ca. 2300 traceroute Server gefunden.
