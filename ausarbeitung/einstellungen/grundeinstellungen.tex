@@ -41,9 +41,10 @@
 \usepackage[automark]{scrpage2}                        % Anpassung der Kopf- und Fußzeilen
 \usepackage{xspace}                                    % Korrekter Leerraum nach Befehlsdefinitionen
 \usepackage{setspace}                                  % Dieses Package brauchen wir für den anderthalbzeiligen Abstand.
-\usepackage{natbib}                                    % Neuimplementierung des \cite-Kommandos
-\usepackage{bibgerm}                                   % Deutsche Bezeichnungen
-\usepackage[absolute]{textpos}                         % placing boxes at absolute positions
+\usepackage[numbers]{natbib}                           % Neuimplementierung des \cite-Kommandos
+%\usepackage{bibgerm}                                  % Deutsche Bezeichnungen (deprecated)
+\usepackage[german]{babelbib}                          % Deutsche Bezeichnungen
+\usepackage[absolute, overlay]{textpos}                % placing boxes at absolute positions
 \usepackage[final]{pdfpages}                           % include pages of external PDF documents
 \usepackage{tabularx}                                  % Spaltenbreite bis zur Seitenbreite dehnen
 \usepackage{makeidx}                                   % Paket zur Erstellung eines Stichwortverzeichnisses
